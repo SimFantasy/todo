@@ -2,7 +2,7 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <TdHeader :addTodo="addTodo" />
+        <TdHeader @addTodo="addTodo" />
         <TdList
           :todos="todos"
           :checkTodo="checkTodo"
@@ -10,8 +10,8 @@
         />
         <TdFooter
           :todos="todos"
-          :checkAllTodo="checkAllTodo"
-          :clearAlltodo="clearAlltodo"
+          @checkAllTodo="checkAllTodo"
+          @clearAlltodo="clearAlltodo"
         />
       </div>
     </div>

@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'TdFooter',
-  props: ['todos', 'checkAllTodo', 'clearAlltodo'],
+  props: ['todos'],
   computed: {
     total() {
       return this.todos.length;
@@ -27,12 +27,12 @@ export default {
     },
   },
   methods: {
-    checkAll(e) {
-      this.checkAllTodo(e.target.checked);
+    checkAll(value) {
+      this.$emit('checkAllTodo', value);
     },
     clearAll() {
       if (confirm('是否清除全部已完成任务？')) {
-        this.clearAlltodo();
+        this.$emit('clearAlltodo');
       }
     },
   },
