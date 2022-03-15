@@ -1,12 +1,6 @@
 <template>
   <ul class="todo-main">
-    <TdItem
-      v-for="todo in todos"
-      :key="todo.id"
-      :todo="todo"
-      :checkTodo="checkTodo"
-      :deleteTodo="deleteTodo"
-    />
+    <TdItem v-for="todo in todos" :key="todo.id" :todo="todo" />
   </ul>
 </template>
 
@@ -15,7 +9,7 @@ import TdItem from './TdItem.vue';
 export default {
   name: 'TdList',
   components: { TdItem },
-  props: ['todos', 'checkTodo', 'deleteTodo'],
+  props: ['todos'],
 };
 </script>
 

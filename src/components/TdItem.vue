@@ -15,15 +15,17 @@
 <script>
 export default {
   name: 'TdItem',
-  props: ['todo', 'checkTodo', 'deleteTodo'],
+  props: ['todo'],
   methods: {
     handleCheck(id) {
       //   通知app;组件对象将done值取反
-      this.checkTodo(id);
+      //   this.checkTodo(id);
+      this.$bus.$emit('checkTodo', id);
     },
     handleDelete(id) {
       if (confirm('请确定是否删除？')) {
-        this.deleteTodo(id);
+        // this.deleteTodo(id);
+        this.$bus.$emit('deleteTodo', id);
       }
     },
   },
