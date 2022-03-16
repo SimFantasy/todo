@@ -1,6 +1,8 @@
 <template>
   <ul class="todo-main">
-    <TdItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <transition-group name="todo" appear>
+      <TdItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    </transition-group>
   </ul>
 </template>
 
@@ -28,5 +30,24 @@ export default {
   text-align: center;
   color: #9e9e9e;
   border-bottom: 1px solid #ddd;
+}
+
+.todo-enter-active {
+  animation: simT 0.3s linear;
+}
+
+.todo-leave-active {
+  animation: simT 0.3s linear reverse;
+}
+
+@keyframes simT {
+  from {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0;
+  }
 }
 </style>

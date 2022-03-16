@@ -37,6 +37,11 @@ export default {
         if (todo.id === id) todo.done = !todo.done;
       });
     },
+    updataTodo(id, title) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.title = title;
+      });
+    },
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
@@ -60,10 +65,12 @@ export default {
   mounted() {
     this.$bus.$on('checkTodo', this.checkTodo);
     this.$bus.$on('deleteTodo', this.deleteTodo);
+    this.$bus.$on('updataTodo', this.updataTodo);
   },
   beforeDestroy() {
     this.$bus.$off('checkTodo');
     this.$bus.$off('deleteTodo');
+    this.$bus.$off('updataTodo');
   },
 };
 </script>
@@ -103,9 +110,20 @@ li {
   background-color: #bd362f;
 }
 
+.btn-info {
+  margin-right: 10px;
+  background-color: #3c96ff;
+  color: #fff;
+}
+
+.btn-info:hover {
+  background-color: #50a1ff;
+}
+
 .todo-container {
   margin: 40px auto;
   width: 640px;
+  overflow: hidden;
 }
 
 .todo-wrap {
